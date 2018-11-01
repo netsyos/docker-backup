@@ -1,5 +1,5 @@
-FROM alpine:3.4
+FROM alpine:latest
 RUN apk add --update bash openssh-client wget curl lftp gzip postgresql-client mysql-client && rm -rf /var/cache/apk/*
-COPY mysql_dump.sh /
-COPY mysql_import.sh /
-ENTRYPOINT ["/mysql_dump.sh"]
+ADD scripts /scripts
+RUN chmod +x /scripts/*
+ENTRYPOINT ["/scripts/mysql_dump.sh"]
