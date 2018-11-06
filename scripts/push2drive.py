@@ -1,5 +1,6 @@
 from __future__ import print_function
 import sys
+import os
 from googleapiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
@@ -15,13 +16,17 @@ def main():
     file_to_backup = sys.argv[2]
     now = datetime.datetime.now()
     print(now.isoformat())
-
-    with open('push2drive_config/config.json') as json_data_file:
+    path = os.path.realpath(sys.path[0])
+    config_path = os.path.join(path, 'push2drive_config/config.json')
+    credentials_path = os.path.join(path, 'push2drive_config/config.json')
+    print(config_path)
+    print(credentials_path)
+    with open(config_path) as json_data_file:
         config = json.load(json_data_file)
     store = file.Storage(config['token_path'])
     creds = store.get()
     if not creds or creds.invalid:
-        flow = client.flow_from_clientsecrets('config_push2drive/credentials.json', SCOPES)
+        flow = client.flow_from_clientsecrets(credentials_path, SCOPES)
         creds = tools.run_flow(flow, store)
 
     drive_service = build('drive', 'v3', http=creds.authorize(Http()))
