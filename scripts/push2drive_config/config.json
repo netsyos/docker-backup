@@ -1,0 +1,5 @@
+{
+  "slack_url":"https://hooks.slack.com",
+  "main_folder_name":"Backup",
+  "token_path":"push2drive_token/token.json"
+}
