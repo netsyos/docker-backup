@@ -11,3 +11,6 @@ if [ -x "$CONFIG_SCRIPT" ]; then
 else
     echo "no configure script"
 fi
+
+echo "configure done"
+tail -f /dev/null

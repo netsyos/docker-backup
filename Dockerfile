@@ -7,4 +7,4 @@ RUN pip install --upgrade flask request pip slackclient
 ADD scripts /scripts
 RUN chmod +x /scripts/*
 ADD entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh", "&&", "tail", "-f", "/dev/null"]
+ENTRYPOINT ["/entrypoint.sh"]
