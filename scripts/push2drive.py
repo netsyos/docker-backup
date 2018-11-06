@@ -18,7 +18,7 @@ def main():
     print(now.isoformat())
     path = os.path.realpath(sys.path[0])
     config_path = os.path.join(path, 'push2drive_config/config.json')
-    credentials_path = os.path.join(path, 'push2drive_config/config.json')
+    credentials_path = os.path.join(path, 'push2drive_config/credentials.json')
     print(config_path)
     print(credentials_path)
     with open(config_path) as json_data_file:

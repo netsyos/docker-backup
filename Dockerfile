@@ -6,4 +6,5 @@ RUN pip install --upgrade google-auth google-auth-oauthlib google-auth-httplib2
 RUN pip install --upgrade flask request pip slackclient
 ADD scripts /scripts
 RUN chmod +x /scripts/*
-ENTRYPOINT ["tail", "-f" ,"/dev/null"]
+ADD entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
