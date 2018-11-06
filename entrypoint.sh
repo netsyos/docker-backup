@@ -4,6 +4,7 @@ if [ -z "$CONFIG_SCRIPT" ]; then
 fi
 
 if [ -x "$CONFIG_SCRIPT" ]; then
+    echo "configure script found"
     # Control will enter here if $DIRECTORY exists.
     exec $CONFIG_SCRIPT
 else
