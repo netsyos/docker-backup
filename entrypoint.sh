@@ -6,9 +6,8 @@ fi
 if [ -x "$CONFIG_SCRIPT" ]; then
     echo "configure script found"
     # Control will enter here if $DIRECTORY exists.
-    exec $CONFIG_SCRIPT
+    /bin/bash $CONFIG_SCRIPT
+    echo "configure done"
 else
     echo "no configure script"
 fi
-
-echo "configure done"
