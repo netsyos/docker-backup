@@ -10,4 +10,4 @@ else
     echo "no configure script"
 fi
 
-tail -f /dev/null
+echo "configure done"
