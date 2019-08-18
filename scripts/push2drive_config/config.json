@@ -1,5 +1,10 @@
 {
   "slack_url":"https://hooks.slack.com",
   "main_folder_name":"Backup",
-  "token_path":"push2drive_token/token.json"
+  "destination_folder_name":"project_name",
+  "token_path":"push2drive_config/token.json",
+  "rotation": {
+    "last" : 7,
+    "modulo" : [28,14]
+  }
 }

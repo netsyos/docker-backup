@@ -255,7 +255,9 @@ def main():
     backup_manager = BackupManager(script_path)
     backup_manager.read_config()
     backup_manager.connect_drive()
-    backup_manager.backup(files_to_backup)
+    backup_manager.check_main_folder()
+    backup_manager.check_destination_folder()
+    backup_manager.get_backup_number()
 
 if __name__ == '__main__':
     main()
