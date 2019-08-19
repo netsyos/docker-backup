@@ -1,5 +1,5 @@
 FROM alpine:latest
-RUN apk add --update split bzip2 tar coreutils bash openssh-client wget curl lftp gzip postgresql-client mysql-client python3 py-pip
+RUN apk add --update bzip2 tar coreutils bash openssh-client wget curl lftp gzip postgresql-client mysql-client python3 py-pip
 RUN rm -rf /var/cache/apk/*
 RUN pip install --upgrade google-api-python-client oauth2client
 RUN pip install --upgrade google-auth google-auth-oauthlib google-auth-httplib2
