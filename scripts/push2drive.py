@@ -2,6 +2,7 @@ from __future__ import print_function
 import sys
 import os
 import time
+import gc
 from googleapiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
@@ -234,6 +235,7 @@ class BackupManager:
         print('Start Backup')
         for file in files_to_backup:
             self.upload_file(file)
+            gc.collect()
         self.slack_notification('{0} - {1}'.format(self.config['destination_folder_name'], self.backup_number))
         self.save_backup_number()
         self.clean()
