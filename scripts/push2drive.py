@@ -192,7 +192,7 @@ class BackupManager:
         #                                    media_body=media,
         #                                    fields='id')
         #                                        .execute()
-        print('File saved (id:%s)' % drive_file.get('id'))
+        #print('File saved (id:%s)' % drive_file.get('id'))
 
     def slack_notification(self, file):
         payload = "{\"text\":\"Backup finished (%s)\"}" % file
@@ -271,6 +271,6 @@ def main():
     backup_manager.backup(files_to_backup)
     del backup_manager
     gc.collect()
-    
+
 if __name__ == '__main__':
     main()
