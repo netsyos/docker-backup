@@ -1,12 +1,12 @@
 FROM alpine:latest
 RUN apk add --update bzip2 tar coreutils bash openssh-client wget curl lftp gzip postgresql-client mysql-client python3 py-pip
 RUN rm -rf /var/cache/apk/*
-RUN pip install --upgrade pip 
-RUN pip install --upgrade google-api-python-client oauth2client
-RUN pip install --upgrade google-auth google-auth-oauthlib google-auth-httplib2
-RUN pip install --upgrade flask 
-RUN pip install --upgrade requests
-RUN pip install --upgrade slackclient 
+RUN pip3 install --upgrade pip 
+RUN pip3 install --upgrade google-api-python-client oauth2client
+RUN pip3 install --upgrade google-auth google-auth-oauthlib google-auth-httplib2
+RUN pi3 install --upgrade flask 
+RUN pip3 install --upgrade requests
+RUN pip3 install --upgrade slackclient 
 ADD scripts /scripts
 RUN chmod +x /scripts/*
 ADD entrypoint.sh /entrypoint.sh
