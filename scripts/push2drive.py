@@ -177,10 +177,21 @@ class BackupManager:
             'name': '{0}.{1}'.format(self.now.isoformat(),file),
             'parents': [self.backup_folder_id]
         }
-        media = MediaFileUpload(file)
-        drive_file = self.drive_service.files().create(body=file_metadata,
-                                            media_body=media,
-                                            fields='id').execute()
+        media = MediaFileUpload(file, mimetype='application/x-gzip', chunksize=1024 * 1024, resumable=True)
+
+        request = self.drive_service.files().create(body=file_metadata, media_body=media)
+        response = None
+        while response is None:
+            status, response = request.next_chunk()
+            if status:
+                print("Uploaded %d%%." % int(status.progress() * 100))
+        print("Upload of {} is complete.".format(file))
+
+        #drive_file = self.drive_service.files().create(
+        #                                    body=file_metadata,
+        #                                    media_body=media,
+        #                                    fields='id')
+        #                                        .execute()
         print('File saved (id:%s)' % drive_file.get('id'))
 
     def slack_notification(self, file):
@@ -256,8 +267,10 @@ def main():
 
     backup_manager = BackupManager(script_path)
     backup_manager.read_config()
-    backup_manager.connect_drive()
+    .connect_drive()
     backup_manager.backup(files_to_backup)
-
+    del backup_manager
+    gc.collect()
+    
 if __name__ == '__main__':
     main()

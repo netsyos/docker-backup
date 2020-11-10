@@ -12,6 +12,8 @@ RUN pip3 install --upgrade google-auth google-auth-oauthlib google-auth-httplib2
 RUN pip3 install --upgrade flask 
 RUN pip3 install --upgrade requests
 RUN pip3 install --upgrade slackclient 
+RUN pip3 install httplib2==0.15.0
+
 ADD scripts /scripts
 RUN chmod +x /scripts/*
 ADD entrypoint.sh /entrypoint.sh
