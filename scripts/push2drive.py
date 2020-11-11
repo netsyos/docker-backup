@@ -267,7 +267,7 @@ def main():
 
     backup_manager = BackupManager(script_path)
     backup_manager.read_config()
-    .connect_drive()
+    backup_manager.connect_drive()
     backup_manager.backup(files_to_backup)
     del backup_manager
     gc.collect()

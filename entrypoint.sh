@@ -13,4 +13,4 @@ else
 fi
 
 echo "configure done"
-tail -f /dev/null
+sleep infinity
